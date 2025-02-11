@@ -22,9 +22,10 @@ st.subheader("📌 AI Video Idea Generator")
 topic = st.text_input("Enter a keyword or topic:")
 if st.button("🔍 Generate Video Ideas"):
     response = openai.ChatCompletion.create(
-        model="gpt-4",
-        messages=[{"role": "system", "content": f"Generate 5 video ideas based on {topic}"}],
+    model="gpt-4",
+    messages=[{"role": "user", "content": user_input}]
     )
+
     ideas = response["choices"][0]["message"]["content"]
     st.write("🎯 **AI Video Ideas:**")
     st.write(ideas)
