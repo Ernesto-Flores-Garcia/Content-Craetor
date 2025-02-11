@@ -14,3 +14,17 @@ elif page == "🎥 Create Video":
     st.subheader("🎥 Generate AI Video with HeyGen")
 elif page == "📊 Analytics":
     st.subheader("📊 YouTube Video Analytics")
+
+"📅 Plan Content"
+import openai
+
+st.subheader("📌 AI Video Idea Generator")
+topic = st.text_input("Enter a keyword or topic:")
+if st.button("🔍 Generate Video Ideas"):
+    response = openai.ChatCompletion.create(
+        model="gpt-4",
+        messages=[{"role": "system", "content": f"Generate 5 video ideas based on {topic}"}],
+    )
+    ideas = response["choices"][0]["message"]["content"]
+    st.write("🎯 **AI Video Ideas:**")
+    st.write(ideas)
